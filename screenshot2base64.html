@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src='https://unpkg.com/base65536@3/dist/iife/base65536.js' crossorigin></script>
+    <title>Vue.js practice</title>
+</head>
+<body>
+    <div id="myapp">
+        <textarea v-html="content"></textarea>
+        <p contenteditable="true"  @input="sync" style="width: 100px; height:100px; padding: 0px; background-color: indianred;"></p>
+
+    </div>
+    
+    <!-- Vue.jsのインストール -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+var myapp = new Vue({
+    el: '#myapp',
+    data: {
+        content: '下位範囲を選択して画像をペーストしてください。Alt+PrtScを押すとアクティブウィンドウだけ画像コピーします',
+    },
+
+    methods: {
+        sync (e) {
+            this.content = e.target.innerHTML
+            // this.content = base65536.encode(e.target.innerHTML)
+        },
+    },
+})
+
+    </script>
+    
+</body>
+</html>
